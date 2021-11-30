@@ -1,8 +1,13 @@
 #pragma once
-#include "GameEntity.h"
-class GameScene : public GameEntity
+#include "Scene.h"
+
+class Image;
+class GameScene : public Scene
 {
 private:
+	Image* backGroundImg;
+
+
 
 public:
 	HRESULT Init();

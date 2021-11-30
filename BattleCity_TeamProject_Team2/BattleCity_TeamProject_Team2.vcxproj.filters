@@ -31,6 +31,9 @@
     <Filter Include="MainGame\Scene">
       <UniqueIdentifier>{c2ddbfdc-83e0-43d4-8845-06e4f4254b26}</UniqueIdentifier>
     </Filter>
+    <Filter Include="2D FrameWork\Manager\Scene">
+      <UniqueIdentifier>{7c48e077-2209-4c53-b7f8-07a1dc4187d2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -64,6 +67,12 @@
       <Filter>2D FrameWork\Timer</Filter>
     </ClCompile>
     <ClCompile Include="GameScene.cpp">
+      <Filter>MainGame\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>2D FrameWork\Manager\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleScene.cpp">
       <Filter>MainGame\Scene</Filter>
     </ClCompile>
   </ItemGroup>
@@ -107,5 +116,30 @@
     <ClInclude Include="GameScene.h">
       <Filter>MainGame\Scene</Filter>
     </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>2D FrameWork\Manager\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleScene.h">
+      <Filter>MainGame\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Despots_Project.rc">
+      <Filter>리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="image\interface\cursor1.cur">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="Image\InterFace\Cursor.cur">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="Image\InterFace\SelectCursor.cur">
+      <Filter>리소스 파일</Filter>
+    </None>
   </ItemGroup>
 </Project>

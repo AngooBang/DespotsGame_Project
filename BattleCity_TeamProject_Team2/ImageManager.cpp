@@ -3,6 +3,11 @@
 
 void ImageManager::Init()
 {
+
+	ImageManager::GetSingleton()->AddImage("Image/BackGround.bmp", WIN_SIZE_X, WIN_SIZE_Y);
+	ImageManager::GetSingleton()->AddImage("Image/Despot_Logo.bmp", 900, 500);
+
+
 }
 
 void ImageManager::Release()

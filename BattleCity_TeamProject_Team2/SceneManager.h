@@ -2,17 +2,17 @@
 #include "Config.h"
 #include "Singleton.h"
 
-class GameEntity;
+class Scene;
 class SceneManager : public Singleton<SceneManager>
 {
 private:
-	map<string, GameEntity*> mapScenes;
-	map<string, GameEntity*> mapLoadingScenes;
+	map<string, Scene*> mapScenes;
+	map<string, Scene*> mapLoadingScenes;
 
 public:
-	static GameEntity* currScene;			// 현재 출력 중인 씬
-	static GameEntity* readyScene;			// 준비 중인 씬
-	static GameEntity* loadingScene;		// 로딩 씬
+	static Scene* currScene;			// 현재 출력 중인 씬
+	static Scene* readyScene;			// 준비 중인 씬
+	static Scene* loadingScene;		// 로딩 씬
 
 
 	void Init();
@@ -20,8 +20,8 @@ public:
 	void Render(HDC hdc);
 	void Release();
 
-	void AddScene(string key, GameEntity* scene);
-	void AddLoadingScene(string key, GameEntity* scene);
+	void AddScene(string key, Scene* scene);
+	void AddLoadingScene(string key, Scene* scene);
 
 	HRESULT ChangeScene(string sceneName);
 	//HRESULT ChangeScene(string sceneName, string loadingSceneName);

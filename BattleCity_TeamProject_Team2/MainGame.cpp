@@ -1,20 +1,25 @@
 #include "MainGame.h"
 #include "Image.h"
 #include "GameScene.h"
+#include "TitleScene.h"
 
 
 
 HRESULT MainGame::Init()
 {
+
+	AddFontResource("Font/Perfect DOS VGA 437.ttf"); // 폰트 추가.
+
 	KeyManager::GetSingleton()->Init();
 	ImageManager::GetSingleton()->Init();
 	TimerManager::GetSingleton()->Init();
 	SceneManager::GetSingleton()->Init();
 
 	SceneManager::GetSingleton()->AddScene("게임씬", new GameScene());
+	SceneManager::GetSingleton()->AddScene("타이틀씬", new TitleScene());
 
 
-	SceneManager::GetSingleton()->ChangeScene("게임씬");
+	SceneManager::GetSingleton()->ChangeScene("타이틀씬");
 
 	srand((unsigned int)time(nullptr));
 	// 타이머 셋팅
@@ -22,9 +27,7 @@ HRESULT MainGame::Init()
 
 	// 백버퍼
 	backBuffer = new Image;
-	int maxSizeX = WIN_SIZE_X > TILEMAPTOOL_SIZE_X ? WIN_SIZE_X : TILEMAPTOOL_SIZE_X;
-	int maxSizeY = WIN_SIZE_Y > TILEMAPTOOL_SIZE_Y ? WIN_SIZE_Y : TILEMAPTOOL_SIZE_Y;
-	backBuffer->Init("Image/mapImage.bmp", maxSizeX, maxSizeY);
+	backBuffer->Init("Image/mapImage.bmp", WIN_SIZE_X, WIN_SIZE_Y);
 
 	return S_OK;
 }

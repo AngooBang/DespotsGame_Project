@@ -12,6 +12,9 @@ private:
 	// ≈∏¿Ã∏”
 	HANDLE hTimer;
 
+	HCURSOR hCursorIn;
+
+
 	int clickedMousePosX;
 	int clickedMousePosY;
 

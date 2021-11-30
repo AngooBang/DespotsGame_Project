@@ -1,9 +1,9 @@
 #include "SceneManager.h"
-#include "GameEntity.h"
+#include "Scene.h"
 
-GameEntity* SceneManager::currScene = nullptr;
-GameEntity* SceneManager::readyScene = nullptr;
-GameEntity* SceneManager::loadingScene = nullptr;
+Scene* SceneManager::currScene = nullptr;
+Scene* SceneManager::readyScene = nullptr;
+Scene* SceneManager::loadingScene = nullptr;
 
 DWORD CALLBACK LoadingThread(LPVOID pvParam)
 {
@@ -40,7 +40,7 @@ void SceneManager::Release()
 {
 }
 
-void SceneManager::AddScene(string key, GameEntity* scene)
+void SceneManager::AddScene(string key, Scene* scene)
 {
 	if (scene == nullptr) return;
 
@@ -49,11 +49,11 @@ void SceneManager::AddScene(string key, GameEntity* scene)
 		return;
 	}
 
-	mapScenes.insert(pair<string, GameEntity*>(key, scene));
+	mapScenes.insert(pair<string, Scene*>(key, scene));
 
 }
 
-void SceneManager::AddLoadingScene(string key, GameEntity* scene)
+void SceneManager::AddLoadingScene(string key, Scene* scene)
 {
 	if (scene == nullptr) return;
 
@@ -62,13 +62,13 @@ void SceneManager::AddLoadingScene(string key, GameEntity* scene)
 		return;
 	}
 
-	mapLoadingScenes.insert(pair<string, GameEntity*>(key, scene));
+	mapLoadingScenes.insert(pair<string, Scene*>(key, scene));
 
 }
 
 HRESULT SceneManager::ChangeScene(string sceneName)
 {
-	map<string, GameEntity*>::iterator it = mapScenes.find(sceneName);
+	map<string, Scene*>::iterator it = mapScenes.find(sceneName);
 
 	if (it == mapScenes.end())
 		return E_FAIL;

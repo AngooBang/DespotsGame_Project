@@ -2,6 +2,7 @@
 
 #include <Windows.h>
 #include "MainGame.h"
+#include "resource.h"
 
 #ifdef UNICODE
 #pragma comment(linker, "/entry:wWinMainCRTStartup /subsystem:console")
@@ -30,7 +31,7 @@ int APIENTRY WinMain(HINSTANCE _hInstance, HINSTANCE _hPrevInstance,
 	wndClass.cbClsExtra = 0;
 	wndClass.cbWndExtra = 0;
 	wndClass.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH); // 핸들형변환
-	wndClass.hCursor = LoadCursor(NULL, IDC_ARROW);
+	wndClass.hCursor = LoadCursor(_hInstance, MAKEINTRESOURCE(IDC_CURSOR1));
 	wndClass.hIcon = LoadIcon(NULL, IDI_APPLICATION);
 	wndClass.hInstance = _hInstance;
 	wndClass.lpfnWndProc = WndProc;				// 함수포인터(콜백함수)
