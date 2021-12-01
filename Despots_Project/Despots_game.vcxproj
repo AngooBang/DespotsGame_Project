@@ -22,7 +22,7 @@
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{fb83c868-710c-4b56-b979-63753fedc62c}</ProjectGuid>
-    <RootNamespace>BattleCityTeamProjectTeam2</RootNamespace>
+    <RootNamespace>Despots_Project</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <ProjectName>Despots_Project</ProjectName>
   </PropertyGroup>
