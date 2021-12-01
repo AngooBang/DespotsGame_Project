@@ -5,10 +5,10 @@ void ImageManager::Init()
 {
 
 	ImageManager::GetSingleton()->AddImage("Image/BackGround.bmp", WIN_SIZE_X, WIN_SIZE_Y);
-	ImageManager::GetSingleton()->AddImage("Image/Despot_Logo.bmp", 900, 500);
-	ImageManager::GetSingleton()->AddImage("Image/Map/Wall.bmp", 1000, 200);
-	ImageManager::GetSingleton()->AddImage("Image/Map/Bottom.bmp", 1000, 50);
-	ImageManager::GetSingleton()->AddImage("Image/Map/Ground_0.bmp", 50, 50);
+	ImageManager::GetSingleton()->AddImage("Image/Despot_Logo.bmp", 700, 400);
+	ImageManager::GetSingleton()->AddImage("Image/Map/Wall.bmp", 900, 140);
+	ImageManager::GetSingleton()->AddImage("Image/Map/Bottom.bmp", 900, 50);
+	ImageManager::GetSingleton()->AddImage("Image/Map/Ground_0.bmp", 45, 45);
 	ImageManager::GetSingleton()->AddImage("Image/Map/Door_LeftFrame.bmp", 30, 200);
 
 

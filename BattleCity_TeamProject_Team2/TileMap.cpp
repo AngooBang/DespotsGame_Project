@@ -38,8 +38,8 @@ void TileMap::InitNode()
 	{
 		for (int j = 0; j < NODE_MAXNUM_X; ++j)
 		{
-			node[i][j].pos.x = WALLIMG_POS_X - 500 + (NODE_SIZE / 2) + j * NODE_SIZE;
-			node[i][j].pos.y = WALLIMG_POS_Y + 100 + (NODE_SIZE / 2) + i * NODE_SIZE;
+			node[i][j].pos.x = WALLIMG_POS_X - 450 + (NODE_SIZE / 2) + j * NODE_SIZE;
+			node[i][j].pos.y = WALLIMG_POS_Y + 70 + (NODE_SIZE / 2) + i * NODE_SIZE;
 
 
 			node[i][j].shape.left = node[i][j].pos.x - (NODE_SIZE / 2);
