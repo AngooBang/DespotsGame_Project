@@ -1,5 +1,6 @@
 #include "GameScene.h"
 #include "Image.h"
+#include "TileMap.h"
 
 HRESULT GameScene::Init()
 {
@@ -7,20 +8,24 @@ HRESULT GameScene::Init()
 
 
 	backGroundImg = ImageManager::GetSingleton()->FindImage("Image/BackGround.bmp");
-
+	tileMap = new TileMap();
+	tileMap->Init();
 
 	return S_OK;
 }
 
 void GameScene::Update()
 {
+	tileMap->Update();
 }
 
 void GameScene::Render(HDC hdc)
 {
 	backGroundImg->Render(hdc);
+	tileMap->Render(hdc);
 }
 
 void GameScene::Release()
 {
+	SAFE_RELEASE(tileMap);
 }

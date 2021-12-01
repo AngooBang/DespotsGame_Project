@@ -34,6 +34,9 @@
     <Filter Include="2D FrameWork\Manager\Scene">
       <UniqueIdentifier>{7c48e077-2209-4c53-b7f8-07a1dc4187d2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainGame\TileMap">
+      <UniqueIdentifier>{cebb4749-68b0-4e34-8f4f-449d58cb2b35}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -74,6 +77,9 @@
     </ClCompile>
     <ClCompile Include="TitleScene.cpp">
       <Filter>MainGame\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="TileMap.cpp">
+      <Filter>MainGame\TileMap</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -124,6 +130,9 @@
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="TileMap.h">
+      <Filter>MainGame\TileMap</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
