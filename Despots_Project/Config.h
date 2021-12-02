@@ -1,14 +1,6 @@
 #pragma once
-#include <Windows.h>
-#include <math.h>
-#include <iostream>
-#include <vector>
-#include <map>
-#include <string>
 
-using namespace std;
-
-#pragma comment(lib, "winmm.lib")
+#include "stdafx.h"
 
 
 #define WIN_START_POS_X	10
@@ -16,6 +8,7 @@ using namespace std;
 #define WIN_SIZE_X	1280
 #define WIN_SIZE_Y	720
 
+#define FROM_FILE Image::FromFile
 
 
 #define PI 3.14159265357989
@@ -34,12 +27,3 @@ typedef struct ArgumentFuncPtr
 	string sceneName;
 	string loadingSceneName;
 } ARGUMENT_PTR, * LPARGUMENT_PTR;
-
-#include "TimerManager.h"
-#include "ImageManager.h"
-#include "KeyManager.h"
-#include "SceneManager.h"
-
-extern HWND g_hWnd;
-extern HINSTANCE g_hInstance;
-extern POINT g_ptMouse;

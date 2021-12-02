@@ -1,11 +1,11 @@
+#include "stdafx.h"
 #include "TitleScene.h"
-#include "Image.h"
 
 
 HRESULT TitleScene::Init()
 {
-	backGroundImg = ImageManager::GetSingleton()->FindImage("Image/BackGround.bmp");
-	despotsLogo = ImageManager::GetSingleton()->FindImage("Image/Despot_Logo.bmp");
+	backGroundImg = FROM_FILE(L"Image/Title/BackGround.bmp");
+	despotsLogo = FROM_FILE(L"Image/Title/Despot_Logo.bmp");
 
 	return S_OK;
 }
@@ -21,8 +21,10 @@ void TitleScene::Update()
 
 void TitleScene::Render(HDC hdc)
 {
-	backGroundImg->Render(hdc);
-	despotsLogo->Render(hdc, LOGO_POS_X, LOGO_POS_Y);
+	Graphics G(hdc);
+
+	G.DrawImage(backGroundImg, 500, 500, WIN_SIZE_X, WIN_SIZE_Y);
+	G.DrawImage(despotsLogo, 500, 500);
 
 	
 }

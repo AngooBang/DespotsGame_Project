@@ -1,6 +1,7 @@
-#include "Image.h"
+#include "stdafx.h"
+#include "BMPImage.h"
 
-HRESULT Image::Init(int width, int height)
+HRESULT BMPImage::Init(int width, int height)
 {
 	HDC hdc = GetDC(g_hWnd);		// 권한이 굉장히 많은 총지배인
 
@@ -31,7 +32,7 @@ HRESULT Image::Init(int width, int height)
 	return S_OK;
 }
 
-HRESULT Image::Init(const char* fileName, int width, int height,
+HRESULT BMPImage::Init(const char* fileName, int width, int height,
 	bool isTrans/* = false*/, COLORREF transColor/* = NULL*/)
 {
 	HDC hdc = GetDC(g_hWnd);
@@ -61,7 +62,7 @@ HRESULT Image::Init(const char* fileName, int width, int height,
 	return S_OK;
 }
 
-HRESULT Image::Init(const char* fileName, int width, int height, int maxFrameX, int maxFrameY,
+HRESULT BMPImage::Init(const char* fileName, int width, int height, int maxFrameX, int maxFrameY,
 	bool isTrans, COLORREF transColor)
 {
 	HDC hdc = GetDC(g_hWnd);
@@ -98,7 +99,7 @@ HRESULT Image::Init(const char* fileName, int width, int height, int maxFrameX, 
 	return S_OK;
 }
 
-void Image::Release()
+void BMPImage::Release()
 {
 	if (imageInfo)
 	{
@@ -111,7 +112,7 @@ void Image::Release()
 	}
 }
 
-void Image::Render(HDC hdc)
+void BMPImage::Render(HDC hdc)
 {
 	BitBlt(hdc,				// 복사 목적지 DC
 		0,					// 복사될 비트맵의 시작 위치 x
@@ -124,7 +125,7 @@ void Image::Render(HDC hdc)
 		SRCCOPY);			// 복사 옵션
 }
 
-void Image::Render(HDC hdc, int destX, int destY)
+void BMPImage::Render(HDC hdc, int destX, int destY)
 {
 	if (isTransparent)
 	{
@@ -155,7 +156,7 @@ void Image::Render(HDC hdc, int destX, int destY)
 
 }
 
-void Image::Render(HDC hdc, int destX, int destY, int frameX, int frameY)
+void BMPImage::Render(HDC hdc, int destX, int destY, int frameX, int frameY)
 {
 	// frameX : 0, frameY : 0 => 시작 (68 * 0, 0) 얼마나 복사할건가 (68, 104)
 	// frameX : 1, frameY : 0 => 시작 (68 * 1, 0)  (68, 104)

@@ -1,7 +1,7 @@
 #pragma once
 #include "GameEntity.h"
 
-class Image;
+class BMPImage;
 class GameObject : public GameEntity
 {
 protected:
@@ -10,7 +10,7 @@ protected:
 	float moveSpeed;
 	int bodySize;
 
-	Image* img;
+	BMPImage* img;
 
 public:
 	void Move();

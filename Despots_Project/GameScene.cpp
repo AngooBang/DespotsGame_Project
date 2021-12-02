@@ -1,5 +1,6 @@
+#include "stdafx.h"
 #include "GameScene.h"
-#include "Image.h"
+#include "BMPImage.h"
 #include "TileMap.h"
 
 HRESULT GameScene::Init()
@@ -7,9 +8,10 @@ HRESULT GameScene::Init()
 	SetWindowSize(WIN_START_POS_X, WIN_START_POS_Y, WIN_SIZE_X, WIN_SIZE_Y);
 
 
-	backGroundImg = ImageManager::GetSingleton()->FindImage("Image/BackGround.bmp");
+	backGroundImg = ImageManager::GetSingleton()->FindImage("Image/Title/BackGround.bmp");
 	tileMap = new TileMap();
-	tileMap->Init();
+	POINT p = { 200, 200 };
+	tileMap->Init(p);
 
 	return S_OK;
 }

@@ -1,7 +1,7 @@
 #pragma once
 #include "Config.h"
 
-class Image
+class BMPImage
 {
 public:
 	enum ImageLoadType
@@ -87,5 +87,6 @@ public:
 	void SetCurrFrameY(int frame) { imageInfo->currFrameY = frame; }
 
 	int GetMaxFrameX() { return imageInfo->maxFrameX; }
+	LPIMAGE_INFO GetImageInfo() { return imageInfo; }
 };
 

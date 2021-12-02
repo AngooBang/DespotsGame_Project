@@ -1,32 +1,40 @@
+﻿#include "stdafx.h"
 #include "MainGame.h"
-#include "Image.h"
 #include "GameScene.h"
 #include "TitleScene.h"
+#include "BMPImage.h"
 
 
 
 HRESULT MainGame::Init()
 {
-
-	AddFontResource("Font/Perfect DOS VGA 437.ttf"); // ��Ʈ �߰�.
+	AddFontResource("Font/Perfect DOS VGA 437.ttf"); // 폰트 추가해주는 기능
 
 	KeyManager::GetSingleton()->Init();
 	ImageManager::GetSingleton()->Init();
 	TimerManager::GetSingleton()->Init();
 	SceneManager::GetSingleton()->Init();
 
-	SceneManager::GetSingleton()->AddScene("���Ӿ�", new GameScene());
-	SceneManager::GetSingleton()->AddScene("Ÿ��Ʋ��", new TitleScene());
+	SceneManager::GetSingleton()->AddScene("게임씬", new GameScene());
+	SceneManager::GetSingleton()->AddScene("타이틀씬", new TitleScene());
 
 
-	SceneManager::GetSingleton()->ChangeScene("Ÿ��Ʋ��");
+	SceneManager::GetSingleton()->ChangeScene("타이틀씬");
 
 	srand((unsigned int)time(nullptr));
-	// Ÿ�̸� ����
+
 	hTimer = (HANDLE)SetTimer(g_hWnd, 0, 10, NULL);
 
-	// �����
-	backBuffer = new Image;
+	// GDI+ 초기화
+	GdiplusStartup(&g_gpToken, &g_gpsi, NULL);
+	//if ( != Ok)
+	//{
+	//	MessageBox(NULL, TEXT("GDI+ 라이브러리를 초기화할 수 없습니다."),
+	//		TEXT("알림"), MB_OK);
+	//	return E_FAIL;
+	//}
+
+	backBuffer = new BMPImage;
 	backBuffer->Init("Image/mapImage.bmp", WIN_SIZE_X, WIN_SIZE_Y);
 
 	return S_OK;
@@ -56,8 +64,6 @@ void MainGame::Render(HDC hdc)
 
 void MainGame::Release()
 {
-	SAFE_RELEASE(backBuffer);
-
 	TimerManager::GetSingleton()->Release();
 	TimerManager::GetSingleton()->ReleaseSingleton();
 
@@ -69,6 +75,9 @@ void MainGame::Release()
 
 	SceneManager::GetSingleton()->Release();
 	SceneManager::GetSingleton()->ReleaseSingleton();
+
+	// GDI+ 객체 종료
+	GdiplusShutdown(g_gpToken);
 
 	KillTimer(g_hWnd, 0);
 }

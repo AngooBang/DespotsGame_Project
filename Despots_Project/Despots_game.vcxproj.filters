@@ -42,16 +42,10 @@
     <ClCompile Include="main.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="MainGame.cpp">
-      <Filter>MainGame</Filter>
-    </ClCompile>
     <ClCompile Include="GameEntity.cpp">
       <Filter>2D FrameWork</Filter>
     </ClCompile>
     <ClCompile Include="GameObject.cpp">
-      <Filter>2D FrameWork</Filter>
-    </ClCompile>
-    <ClCompile Include="Image.cpp">
       <Filter>2D FrameWork</Filter>
     </ClCompile>
     <ClCompile Include="ImageManager.cpp">
@@ -81,6 +75,15 @@
     <ClCompile Include="TileMap.cpp">
       <Filter>MainGame\TileMap</Filter>
     </ClCompile>
+    <ClCompile Include="BMPImage.cpp">
+      <Filter>2D FrameWork</Filter>
+    </ClCompile>
+    <ClCompile Include="MainGame.cpp">
+      <Filter>MainGame</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainGame.h">
@@ -90,9 +93,6 @@
       <Filter>2D FrameWork</Filter>
     </ClInclude>
     <ClInclude Include="GameObject.h">
-      <Filter>2D FrameWork</Filter>
-    </ClInclude>
-    <ClInclude Include="Image.h">
       <Filter>2D FrameWork</Filter>
     </ClInclude>
     <ClInclude Include="Config.h">
@@ -133,6 +133,12 @@
     </ClInclude>
     <ClInclude Include="TileMap.h">
       <Filter>MainGame\TileMap</Filter>
+    </ClInclude>
+    <ClInclude Include="BMPImage.h">
+      <Filter>2D FrameWork</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

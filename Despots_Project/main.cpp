@@ -1,6 +1,6 @@
 // main.cpp
 
-#include <Windows.h>
+#include "stdafx.h"
 #include "MainGame.h"
 #include "resource.h"
 
@@ -16,6 +16,12 @@ HINSTANCE	g_hInstance;
 HWND		g_hWnd;
 LPSTR		g_lpszClass = (LPSTR)TEXT("Despot's Game");
 MainGame	g_mainGame;
+
+ULONG_PTR g_gpToken;
+GdiplusStartupInput g_gpsi;
+
+
+
 
 void SetWindowSize(int startX, int startY, int sizeX, int sizeY);
 
@@ -52,7 +58,7 @@ int APIENTRY WinMain(HINSTANCE _hInstance, HINSTANCE _hPrevInstance,
 
 	// 메인게임 초기화
 	g_mainGame.Init();
-
+	
 
 	// 윈도우 출력
 	ShowWindow(g_hWnd, nCmdShow);
@@ -68,6 +74,7 @@ int APIENTRY WinMain(HINSTANCE _hInstance, HINSTANCE _hPrevInstance,
 
 	// 메인게임 해제
 	g_mainGame.Release();
+
 
 	return message.wParam;
 }

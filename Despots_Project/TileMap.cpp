@@ -1,12 +1,18 @@
+#include "stdafx.h"
 #include "TileMap.h"
-#include "Image.h"
+#include "BMPImage.h"
 
-HRESULT TileMap::Init()
+HRESULT TileMap::Init(POINT start)
 {
 	wallImg = ImageManager::GetSingleton()->FindImage("Image/Map/Wall.bmp");
 	bottomImg = ImageManager::GetSingleton()->FindImage("Image/Map/Bottom.bmp");
 
 	leftDoorFrame = ImageManager::GetSingleton()->FindImage("Image/Map/Door_LeftFrame.bmp");
+
+	wallImgPosX = start.x + wallImg->GetImageInfo()->width / 2;
+	wallImgPosX = start.y + wallImg->GetImageInfo()->height / 2;
+
+
 
 	InitNode();
 

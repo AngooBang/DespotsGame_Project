@@ -1,12 +1,12 @@
 #pragma once
 #include "Scene.h"
 
-class Image;
+class BMPImage;
 class TileMap;
 class GameScene : public Scene
 {
 private:
-	Image* backGroundImg;
+	BMPImage* backGroundImg;
 
 	TileMap* tileMap;
 

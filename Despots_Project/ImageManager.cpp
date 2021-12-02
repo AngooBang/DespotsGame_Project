@@ -1,11 +1,12 @@
+#include "stdafx.h"
 #include "ImageManager.h"
-#include "Image.h"
+#include "BMPImage.h"
 
 void ImageManager::Init()
 {
 
-	ImageManager::GetSingleton()->AddImage("Image/BackGround.bmp", WIN_SIZE_X, WIN_SIZE_Y);
-	ImageManager::GetSingleton()->AddImage("Image/Despot_Logo.bmp", 700, 400);
+	ImageManager::GetSingleton()->AddImage("Image/Title/BackGround.bmp", WIN_SIZE_X, WIN_SIZE_Y);
+	ImageManager::GetSingleton()->AddImage("Image/Title/Despot_Logo.bmp", 700, 400);
 	ImageManager::GetSingleton()->AddImage("Image/Map/Wall.bmp", 900, 140);
 	ImageManager::GetSingleton()->AddImage("Image/Map/Bottom.bmp", 900, 50);
 	ImageManager::GetSingleton()->AddImage("Image/Map/Ground_0.bmp", 45, 45);
@@ -16,7 +17,7 @@ void ImageManager::Init()
 
 void ImageManager::Release()
 {
-	map<string, Image*>::iterator it;
+	map<string, BMPImage*>::iterator it;
 	for (it = mapImages.begin(); it != mapImages.end();)
 	{
 		SAFE_RELEASE(it->second);
@@ -27,14 +28,14 @@ void ImageManager::Release()
 
 }
 
-Image* ImageManager::AddImage(const char* fileName, int width, int height, bool isTrans, COLORREF transColor)
+BMPImage* ImageManager::AddImage(const char* fileName, int width, int height, bool isTrans, COLORREF transColor)
 {
 	// 이미지를 찾아보고 만약 있으면 추가안함.
 	if (FindImage(fileName))
 	{
 		return nullptr;
 	}
-	Image* img = new Image;
+	BMPImage* img = new BMPImage;
 	if (FAILED(img->Init(fileName, width, height, isTrans, transColor)))
 	{
 		SAFE_RELEASE(img);
@@ -64,13 +65,13 @@ Image* ImageManager::AddImage(const char* fileName, int width, int height, bool 
 //	mapImages.insert(make_pair(fileName, img));
 //}
 
-Image* ImageManager::AddImage(const char* fileName, int width, int height, int maxFrameX, int maxFrameY, bool isTrans, COLORREF transColor)
+BMPImage* ImageManager::AddImage(const char* fileName, int width, int height, int maxFrameX, int maxFrameY, bool isTrans, COLORREF transColor)
 {
 	if (FindImage(fileName))
 	{
 		return nullptr;
 	}
-	Image* img = new Image;
+	BMPImage* img = new BMPImage;
 	if (FAILED(img->Init(fileName, width, height, maxFrameX, maxFrameY, isTrans, transColor)))
 	{
 		SAFE_RELEASE(img);
@@ -81,10 +82,10 @@ Image* ImageManager::AddImage(const char* fileName, int width, int height, int m
 	return img;
 }
 
-Image* ImageManager::FindImage(const char* fileName)
+BMPImage* ImageManager::FindImage(const char* fileName)
 {
 
-	map<string, Image*>::iterator it = mapImages.find(fileName);
+	map<string, BMPImage*>::iterator it = mapImages.find(fileName);
 	if (it == mapImages.end())
 	{
 		return nullptr;
@@ -96,7 +97,7 @@ Image* ImageManager::FindImage(const char* fileName)
 
 void ImageManager::DeleteImage(const char* fileName)
 {
-	map<string, Image*>::iterator it = mapImages.find(fileName);
+	map<string, BMPImage*>::iterator it = mapImages.find(fileName);
 	if (it == mapImages.end())
 	{
 		return;
