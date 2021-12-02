@@ -5,12 +5,13 @@
 #include <vector>
 #include <map>
 #include <string>
-#include <gdiplus.h>
 
 using namespace std;
-using namespace Gdiplus;
 
 #pragma comment(lib, "winmm.lib")
+
+#include <gdiplus.h>
+using namespace Gdiplus;
 #pragma comment(lib, "gdiplus")
 
 #include "TimerManager.h"

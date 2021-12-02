@@ -18,6 +18,8 @@ HRESULT MainGame::Init()
 	SceneManager::GetSingleton()->AddScene("게임씬", new GameScene());
 	SceneManager::GetSingleton()->AddScene("타이틀씬", new TitleScene());
 
+	// GDI+ 초기화
+	GdiplusStartup(&g_gpToken, &g_gpsi, NULL);
 
 	SceneManager::GetSingleton()->ChangeScene("타이틀씬");
 
@@ -25,14 +27,6 @@ HRESULT MainGame::Init()
 
 	hTimer = (HANDLE)SetTimer(g_hWnd, 0, 10, NULL);
 
-	// GDI+ 초기화
-	GdiplusStartup(&g_gpToken, &g_gpsi, NULL);
-	//if ( != Ok)
-	//{
-	//	MessageBox(NULL, TEXT("GDI+ 라이브러리를 초기화할 수 없습니다."),
-	//		TEXT("알림"), MB_OK);
-	//	return E_FAIL;
-	//}
 
 	backBuffer = new BMPImage;
 	backBuffer->Init("Image/mapImage.bmp", WIN_SIZE_X, WIN_SIZE_Y);
