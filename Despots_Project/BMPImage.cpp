@@ -41,7 +41,7 @@ HRESULT BMPImage::Init(const char* fileName, int width, int height,
 	imageInfo->width = width;
 	imageInfo->height = height;
 	imageInfo->loadType = ImageLoadType::File;
-	imageInfo->hBitmap = (HBITMAP)LoadImage(g_hInstance, fileName, IMAGE_BITMAP, width, height,
+	imageInfo->hBitmap = (HBITMAP)LoadImageA(g_hInstance, fileName, IMAGE_BITMAP, width, height,
 		LR_LOADFROMFILE);
 	imageInfo->hMemDc = CreateCompatibleDC(hdc);	// 새로 생성된 DC 
 											// 기본적으로 Bitmap에 연결되어 있다.
@@ -71,7 +71,7 @@ HRESULT BMPImage::Init(const char* fileName, int width, int height, int maxFrame
 	imageInfo->width = width;
 	imageInfo->height = height;
 	imageInfo->loadType = ImageLoadType::File;
-	imageInfo->hBitmap = (HBITMAP)LoadImage(g_hInstance, fileName, IMAGE_BITMAP, width, height,
+	imageInfo->hBitmap = (HBITMAP)LoadImageA(g_hInstance, fileName, IMAGE_BITMAP, width, height,
 		LR_LOADFROMFILE);
 	imageInfo->hMemDc = CreateCompatibleDC(hdc);	// 새로 생성된 DC 
 											// 기본적으로 Bitmap에 연결되어 있다.

@@ -4,7 +4,7 @@
 
 void ImageManager::Init()
 {
-
+	ImageManager::GetSingleton()->AddImage("Image/mapImage.bmp", WIN_SIZE_X, WIN_SIZE_Y);
 	ImageManager::GetSingleton()->AddImage("Image/Title/BackGround.bmp", WIN_SIZE_X, WIN_SIZE_Y);
 	ImageManager::GetSingleton()->AddImage("Image/Title/Despot_Logo.bmp", 700, 400);
 	ImageManager::GetSingleton()->AddImage("Image/Map/Wall.bmp", 900, 140);

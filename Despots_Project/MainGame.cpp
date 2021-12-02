@@ -8,7 +8,7 @@
 
 HRESULT MainGame::Init()
 {
-	AddFontResource("Font/Perfect DOS VGA 437.ttf"); // 폰트 추가해주는 기능
+	AddFontResource(TEXT("Font/Perfect DOS VGA 437.ttf")); // 폰트 추가해주는 기능
 
 	KeyManager::GetSingleton()->Init();
 	ImageManager::GetSingleton()->Init();
@@ -28,8 +28,7 @@ HRESULT MainGame::Init()
 	hTimer = (HANDLE)SetTimer(g_hWnd, 0, 10, NULL);
 
 
-	backBuffer = new BMPImage;
-	backBuffer->Init("Image/mapImage.bmp", WIN_SIZE_X, WIN_SIZE_Y);
+	backBuffer = ImageManager::GetSingleton()->FindImage("Image/mapImage.bmp");
 
 	return S_OK;
 }

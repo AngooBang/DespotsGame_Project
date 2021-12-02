@@ -14,7 +14,7 @@
 POINT		g_ptMouse;
 HINSTANCE	g_hInstance;
 HWND		g_hWnd;
-LPSTR		g_lpszClass = (LPSTR)TEXT("Despot's Game");
+LPWSTR		g_lpszClass = (LPWSTR)TEXT("Despot's Game");
 MainGame	g_mainGame;
 
 ULONG_PTR g_gpToken;
@@ -28,8 +28,8 @@ void SetWindowSize(int startX, int startY, int sizeX, int sizeY);
 LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage,
 	WPARAM wParam, LPARAM lParam);
 
-int APIENTRY WinMain(HINSTANCE _hInstance, HINSTANCE _hPrevInstance,
-	LPSTR _lpszCmdParam, int nCmdShow)
+int APIENTRY wWinMain(HINSTANCE _hInstance, HINSTANCE _hPrevInstance,
+	LPWSTR _lpszCmdParam, int nCmdShow)
 {
 
 

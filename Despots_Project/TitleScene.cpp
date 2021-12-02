@@ -9,8 +9,8 @@ HRESULT TitleScene::Init()
 	despotsLogo = FROM_FILE(L"Image/Title/Despot_Logo.bmp");
 
 	m_startButton = new Button(this, &TitleScene::GameStart);
-	POINT p = { 100, 100 };
-	m_startButton->Init(ButtonType::Normal, p, 100, 100);
+	POINT p = { STARTBUTTON_POS_X, STARTBUTTON_POS_Y };
+	m_startButton->Init(ButtonType::Normal, p, 200, 100, TEXT("새로운 게임"));
 
 	return S_OK;
 }
