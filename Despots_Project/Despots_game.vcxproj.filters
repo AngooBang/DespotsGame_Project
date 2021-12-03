@@ -90,10 +90,10 @@
     <ClCompile Include="Door.cpp">
       <Filter>MainGame\TileMap</Filter>
     </ClCompile>
-    <ClCompile Include="MainGame.cpp">
+    <ClCompile Include="FullMap.cpp">
       <Filter>MainGame</Filter>
     </ClCompile>
-    <ClCompile Include="FullMap.cpp">
+    <ClCompile Include="MainGame.cpp">
       <Filter>MainGame</Filter>
     </ClCompile>
   </ItemGroup>
