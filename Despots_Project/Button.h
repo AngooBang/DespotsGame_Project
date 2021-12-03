@@ -20,16 +20,21 @@ public:
 	}
 	virtual ~Button() = default;
 
-	HRESULT Init(ButtonType type, POINT pos, int sizeX, int sizeY, const WCHAR* name = {})
+	virtual HRESULT Init(ButtonType type, POINT pos, int sizeX, int sizeY, const WCHAR* name = {})
 	{
-		
-		switch (type)
+		buttonType = type;
+		switch (buttonType)
 		{
 		case ButtonType::Normal:
 			buttonPutImage = FROM_FILE(L"Image/Title/Normal_Hover.png");
 			buttonClickImage = FROM_FILE(L"Image/TItle/Normal_Active.png");
 			imgCorrectionValue = 40;
 			break;
+			
+		case ButtonType::Exit:
+			buttonPutImage = FROM_FILE(L"Image/Title/Exit_Hover.png");
+			buttonClickImage = FROM_FILE(L"Image/TItle/Exit_Active.png");
+			imgCorrectionValue = 40;
 		default:
 			break;
 		}
@@ -87,9 +92,10 @@ public:
 		Font eng(L"Perfect DOS VGA 437", 20);
 		Font kor(L"Noto Sans CJK JP Regular", 20);
 		Font font(L"¹Ý´Þ", 25);
-		SolidBrush idleBrush(Color(111, 107, 128));
-		SolidBrush hoverBrush(Color(111, 107, 128));
-		SolidBrush clickBrush(Color(111, 107, 128));
+		
+
+		SetBrush();
+
 		PointF posf = { (FLOAT)pos.x, (FLOAT)pos.y };
 
 		StringFormat SF;
@@ -101,15 +107,15 @@ public:
 		{
 		case Button::eButtonState::Idle:
 			g.DrawImage(buttonIdleImage, renderPos.X, renderPos.Y, sizeX, sizeY);			
-			g.DrawString(buttonName, -1, &font, posf, &SF, &idleBrush);
+			g.DrawString(buttonName, -1, &kor, posf, &SF, &idleBrush);
 			break;
 		case Button::eButtonState::Hover:
 			g.DrawImage(buttonPutImage, renderPos.X, renderPos.Y, sizeX, sizeY);
-			g.DrawString(buttonName, -1, &font, posf, &SF, &hoverBrush);
+			g.DrawString(buttonName, -1, &kor, posf, &SF, &hoverBrush);
 			break;
 		case Button::eButtonState::Click:
 			g.DrawImage(buttonClickImage, renderPos.X-(imgCorrectionValue / 2), renderPos.Y-(imgCorrectionValue / 2 / 2), sizeX + (imgCorrectionValue), sizeY + (imgCorrectionValue / 2));
-			g.DrawString(buttonName, -1, &font, posf, &SF, &clickBrush);
+			g.DrawString(buttonName, -1, &kor, posf, &SF, &clickBrush);
 			break;
 		case Button::eButtonState::None:
 		default:
@@ -121,11 +127,30 @@ public:
 	{
 
 	}
+	void SetBrush()
+	{
+		switch (buttonType)
+		{
+		case ButtonType::Normal:
+			idleBrush.SetColor(Color(111, 107, 128));
+			hoverBrush.SetColor(Color(83, 192, 174));
+			clickBrush.SetColor(Color(28, 18, 32));
+			break;
+		case ButtonType::Exit:
+			idleBrush.SetColor(Color(111, 107, 128));
+			hoverBrush.SetColor(Color(184, 60, 102));
+			clickBrush.SetColor(Color(28, 18, 32));
+			break;
+		default:
+			break;
+		}
+	}
 
 private:
 	scene_t* _scene;
 	callback_t _callback;
 
+	ButtonType buttonType = ButtonType::End;
 	POINT pos = {};
 	int sizeX = 0;
 	int sizeY = 0;
@@ -134,10 +159,17 @@ private:
 	Image* buttonClickImage = nullptr;
 	int imgCorrectionValue = 0;
 	const WCHAR* buttonName = nullptr;
+
+	SolidBrush idleBrush = 0;
+	SolidBrush hoverBrush = 0;
+	SolidBrush clickBrush = 0;
 	
 	eButtonState state = eButtonState::None;
 
 	Point renderPos = {};
 	RECT collisionRect = {};
+
+
+
 
 };

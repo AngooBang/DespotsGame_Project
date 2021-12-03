@@ -2,13 +2,13 @@
 #include "Scene.h"
 
 class BMPImage;
-class TileMap;
+class FullMap;
 class GameScene : public Scene
 {
 private:
-	BMPImage* backGroundImg;
+	BMPImage* m_backGroundImg;
 
-	TileMap* tileMap;
+	FullMap* m_fullMap;
 
 public:
 	HRESULT Init();

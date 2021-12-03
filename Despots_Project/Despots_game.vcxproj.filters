@@ -37,6 +37,9 @@
     <Filter Include="MainGame\TileMap">
       <UniqueIdentifier>{cebb4749-68b0-4e34-8f4f-449d58cb2b35}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainGame\Button">
+      <UniqueIdentifier>{99b39dd2-5a1d-4284-a229-60aa351a1529}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -84,7 +87,13 @@
     <ClCompile Include="Button.cpp">
       <Filter>2D FrameWork\UI_Button</Filter>
     </ClCompile>
+    <ClCompile Include="Door.cpp">
+      <Filter>MainGame\TileMap</Filter>
+    </ClCompile>
     <ClCompile Include="MainGame.cpp">
+      <Filter>MainGame</Filter>
+    </ClCompile>
+    <ClCompile Include="FullMap.cpp">
       <Filter>MainGame</Filter>
     </ClCompile>
   </ItemGroup>
@@ -145,6 +154,12 @@
     </ClInclude>
     <ClInclude Include="Button.h">
       <Filter>2D FrameWork\UI_Button</Filter>
+    </ClInclude>
+    <ClInclude Include="Door.h">
+      <Filter>MainGame\TileMap</Filter>
+    </ClInclude>
+    <ClInclude Include="FullMap.h">
+      <Filter>MainGame</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

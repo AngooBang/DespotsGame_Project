@@ -4,8 +4,11 @@
 #define LOGO_POS_X WIN_SIZE_X / 2 - 350
 #define LOGO_POS_Y WIN_SIZE_Y / 2 - 350
 
-#define STARTBUTTON_POS_X 400
+#define STARTBUTTON_POS_X WIN_HALF_X - 200
 #define STARTBUTTON_POS_Y 600
+
+#define EXITBUTTON_POS_X WIN_HALF_X + 200
+#define EXITBUTTON_POS_Y 600
 
 
 template <typename T>
@@ -22,6 +25,7 @@ private:
 	RECT startTextBox;
 
 	Button* m_startButton;
+	Button* m_exitButton;
 
 public:
 	HRESULT Init();
@@ -30,5 +34,6 @@ public:
 	void Release();
 
 	void GameStart();
+	void GameExit();
 };
 

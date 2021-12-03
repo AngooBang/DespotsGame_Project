@@ -142,6 +142,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="Door.cpp" />
+    <ClCompile Include="FullMap.cpp" />
     <ClCompile Include="GameEntity.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameScene.cpp" />
@@ -162,6 +164,8 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="CommonFunction.h" />
     <ClInclude Include="Config.h" />
+    <ClInclude Include="Door.h" />
+    <ClInclude Include="FullMap.h" />
     <ClInclude Include="GameEntity.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameScene.h" />
