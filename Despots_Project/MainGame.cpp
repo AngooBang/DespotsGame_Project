@@ -21,7 +21,7 @@ HRESULT MainGame::Init()
 	// GDI+ 초기화
 	GdiplusStartup(&g_gpToken, &g_gpsi, NULL);
 
-	SceneManager::GetSingleton()->ChangeScene("타이틀씬");
+	SceneManager::GetSingleton()->ChangeScene("게임씬");
 
 	srand((unsigned int)time(nullptr));
 
@@ -49,25 +49,21 @@ void MainGame::Render(HDC hdc)
 
 	SceneManager::GetSingleton()->Render(hBackBufferDC);
 
-
-	//TimerManager::GetSingleton()->Render(hBackBufferDC);
+	TimerManager::GetSingleton()->Render(hBackBufferDC);
 
 	backBuffer->Render(hdc);
+
 }
 
 void MainGame::Release()
 {
 	TimerManager::GetSingleton()->Release();
-	TimerManager::GetSingleton()->ReleaseSingleton();
 
 	ImageManager::GetSingleton()->Release();
-	ImageManager::GetSingleton()->ReleaseSingleton();
 
 	KeyManager::GetSingleton()->Release();
-	KeyManager::GetSingleton()->ReleaseSingleton();
 
 	SceneManager::GetSingleton()->Release();
-	SceneManager::GetSingleton()->ReleaseSingleton();
 
 	// GDI+ 객체 종료
 	GdiplusShutdown(g_gpToken);
