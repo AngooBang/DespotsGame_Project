@@ -40,6 +40,9 @@
     <Filter Include="MainGame\Button">
       <UniqueIdentifier>{99b39dd2-5a1d-4284-a229-60aa351a1529}</UniqueIdentifier>
     </Filter>
+    <Filter Include="2D FrameWork\Animator">
+      <UniqueIdentifier>{d5041088-ee26-45ef-a2ab-c7693d23bf5a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -95,6 +98,12 @@
     </ClCompile>
     <ClCompile Include="MainGame.cpp">
       <Filter>MainGame</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraManager.cpp">
+      <Filter>2D FrameWork\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Animator.cpp">
+      <Filter>2D FrameWork\Animator</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -160,6 +169,12 @@
     </ClInclude>
     <ClInclude Include="FullMap.h">
       <Filter>MainGame</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraManager.h">
+      <Filter>2D FrameWork\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Animator.h">
+      <Filter>2D FrameWork\Animator</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -6,12 +6,11 @@
 #define NODE_SIZE 45
 
 
-
 enum class TILE_TYPE { Normal, Wall, End };
 
 
 
-struct Node
+typedef struct Node
 {
 	RECT shape;
 	POINT pos;
@@ -19,28 +18,32 @@ struct Node
 	//int frameX;
 	//int frameY;
 	TILE_TYPE type;
-};
+}*LPNode;
 
-
+template <typename T>
+class Door;
 class TileMap : public GameEntity
 {
+	using Door = Door<TileMap>;
+
 private:
-	BMPImage* wallImg;
-	BMPImage* bottomImg;
-	BMPImage* tilemapImg;
+	BMPImage* m_wallImg = nullptr;
+	BMPImage* m_bottomImg = nullptr;
+	BMPImage* m_tilemapImg = nullptr;
 
 
 	POINT m_startPos;
 
+	int m_wallPosX = 0;
+	int m_wallPosY = 0;
 
-	int wallPosX, wallPosY;
-	int bottomPosX, bottomPosY;
-
-
+	int m_bottomPosX = 0;
+	int m_bottomPosY = 0;
 
 	Node node[NODE_MAXNUM_Y][NODE_MAXNUM_X];
-
 	vector<pair<int, int>> nodeRelationShip[9];
+
+	Door* m_leftDoor = nullptr;
 
 public:
 	HRESULT Init(POINT start);
@@ -50,6 +53,8 @@ public:
 
 	void InitNode();
 	void RenderNode(const HDC& hdc);
+
+	void MoveLeftRoom();
 
 
 };

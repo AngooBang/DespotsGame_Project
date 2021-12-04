@@ -5,20 +5,16 @@ class BMPImage;
 class GameObject : public GameEntity
 {
 protected:
-	POINTFLOAT pos;
-	RECT shape;
-	float moveSpeed;
-	int bodySize;
-
-	BMPImage* img;
+	POINT m_pos;
+	RECT m_shape;
+	int m_bodySize;
 
 public:
 	void Move();
 
-	inline void SetPos(POINTFLOAT pos) { this->pos = pos; }
-	inline POINTFLOAT GetPos() { return this->pos; }
-	inline void SetMoveSpeed(float speed) { this->moveSpeed = speed; }
-	inline int GetBodySize() { return this->bodySize; }
+	inline void SetPos(POINT pos) { m_pos = pos; }
+	inline POINT GetPos() { return m_pos; }
+	inline int GetBodySize() { return m_bodySize; }
 
 	GameObject();
 	~GameObject();

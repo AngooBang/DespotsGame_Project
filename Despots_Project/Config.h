@@ -11,6 +11,10 @@
 #define WIN_HALF_X WIN_SIZE_X / 2
 #define WIN_HALF_Y WIN_SIZE_Y / 2
 
+#define CAMERA_POS CameraManager::GetSingleton()->GetCameraPos()
+
+#define CAMERA_VIEW_X (WIN_SIZE_X - CAMERA_POS.x)
+#define CAMERA_VIEW_Y (WIN_SIZE_Y - CAMERA_POS.y)
 
 #define FROM_FILE Image::FromFile
 
@@ -24,7 +28,7 @@
 #define SAFE_DELETE(p)	{ if (p) { delete p; p = nullptr; } }
 #define SAFE_UPDATE(p) { if (p) { p->Update();} } 
 
-enum MoveDir { Left, Right, Up, Down };
+enum class MoveDir { Left, Right, Up, Down };
 
 enum class ButtonType { Normal, Exit, End };
 

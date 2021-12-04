@@ -10,9 +10,9 @@ HRESULT FullMap::Init()
 	m_room4 = new TileMap;
 
 	m_room1->Init(POINT({ 180, 70 }));
-	m_room2->Init(POINT({ 1180, 70 }));
+	m_room2->Init(POINT({ 1480, 70 }));
 	m_room3->Init(POINT({ 180, 1070 }));
-	m_room4->Init(POINT({ 1180, 1070 }));
+	m_room4->Init(POINT({ 1480, 1070 }));
 	
 
 	return S_OK;

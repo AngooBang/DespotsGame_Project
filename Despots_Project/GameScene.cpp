@@ -17,6 +17,22 @@ HRESULT GameScene::Init()
 
 void GameScene::Update()
 {
+	if (KeyManager::GetSingleton()->IsStayKeyDown(VK_LEFT))
+	{
+		CameraManager::GetSingleton()->SetCameraPos({ -10, 0 });
+	}
+	if (KeyManager::GetSingleton()->IsStayKeyDown(VK_RIGHT))
+	{
+		CameraManager::GetSingleton()->SetCameraPos({ 10, 0 });
+	}
+	if (KeyManager::GetSingleton()->IsStayKeyDown(VK_UP))
+	{
+		CameraManager::GetSingleton()->SetCameraPos({ 0, -10 });
+	}
+	if (KeyManager::GetSingleton()->IsStayKeyDown(VK_DOWN))
+	{
+		CameraManager::GetSingleton()->SetCameraPos({ 0, 10 });
+	}
 	SAFE_UPDATE(m_fullMap);
 }
 

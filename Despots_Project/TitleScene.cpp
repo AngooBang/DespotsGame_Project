@@ -5,7 +5,7 @@
 
 HRESULT TitleScene::Init()
 {
-	backGroundImg = ::new Gdiplus::Image(L"Image/Title/BackGround.bmp");
+	backGroundImg = FROM_FILE(L"Image/Title/BackGround.bmp");
 	despotsLogo = FROM_FILE(L"Image/Title/Despot_Logo.bmp");
 
 	m_startButton = new Button(this, &TitleScene::GameStart);
