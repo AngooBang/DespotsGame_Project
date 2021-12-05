@@ -19,9 +19,14 @@ HRESULT TileMap::Init(POINT start)
 				+ m_bottomImg->GetImageInfo()->height / 2;
 
 	m_leftDoor = new Door(this, &TileMap::MoveLeftRoom);
+	m_upDoor = new Door(this, &TileMap::MoveUpRoom);
+	m_rightDoor = new Door(this, &TileMap::MoveRightRoom);
+	m_downDoor = new Door(this, &TileMap::MoveDownRoom);
 	
 	m_leftDoor->Init(DoorDir::Left, POINT({ m_startPos.x - 20, m_startPos.y + m_wallImg->GetImageInfo()->height + (NODE_SIZE * 3) }));
-	//m_leftDoor->Init(DoorDir::Left, POINT({ LDOOR_POS_X, LDOOR_POS_Y }));
+	m_upDoor->Init(DoorDir::Up, POINT({ m_wallPosX, m_wallPosY - 20 }));
+	m_rightDoor->Init(DoorDir::Right, POINT({ m_startPos.x + m_wallImg->GetImageInfo()->width + 20, m_startPos.y + m_wallImg->GetImageInfo()->height + (NODE_SIZE * 3) }));
+	m_downDoor->Init(DoorDir::Down, POINT({ m_bottomPosX, m_bottomPosY - 50 }));
 
 
 	InitNode();
@@ -32,6 +37,9 @@ HRESULT TileMap::Init(POINT start)
 void TileMap::Update()
 {
 	SAFE_UPDATE(m_leftDoor);
+	SAFE_UPDATE(m_upDoor);
+	SAFE_UPDATE(m_rightDoor);
+	SAFE_UPDATE(m_downDoor);
 }
 
 void TileMap::Render(HDC hdc)
@@ -39,16 +47,22 @@ void TileMap::Render(HDC hdc)
 	m_wallImg->Render(hdc, m_wallPosX + CAMERA_VIEW_X, m_wallPosY + CAMERA_VIEW_Y);
 
 	RenderNode(hdc);
+	m_bottomImg->Render(hdc, m_bottomPosX + CAMERA_VIEW_X, m_bottomPosY + CAMERA_VIEW_Y);
 
 	m_leftDoor->Render(hdc);
+	m_upDoor->Render(hdc);
+	m_rightDoor->Render(hdc);
+	m_downDoor->Render(hdc);
 
 	
-	m_bottomImg->Render(hdc, m_bottomPosX + CAMERA_VIEW_X, m_bottomPosY + CAMERA_VIEW_Y);
 }
 
 void TileMap::Release()
 {
 	SAFE_RELEASE(m_leftDoor);
+	SAFE_RELEASE(m_upDoor);
+	SAFE_RELEASE(m_rightDoor);
+	SAFE_RELEASE(m_downDoor);
 }
 
 void TileMap::InitNode()
@@ -86,5 +100,17 @@ void TileMap::RenderNode(const HDC& hdc)
 }
 
 void TileMap::MoveLeftRoom()
+{
+}
+
+void TileMap::MoveUpRoom()
+{
+}
+
+void TileMap::MoveRightRoom()
+{
+}
+
+void TileMap::MoveDownRoom()
 {
 }

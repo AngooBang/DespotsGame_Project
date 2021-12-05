@@ -6,12 +6,17 @@ public:
 	Animator() = default;
 	~Animator() = default;
 
-	virtual HRESULT Init(const WCHAR* path, POINT pos, int renderSizeX, int renderSizeY, int maxFrameX, int maxFrameY, bool isLoop = false, float motionSpeed = 0.05f, float scale = 1.0f);
+	virtual HRESULT Init(const WCHAR* path, POINT pos, int renderSizeX, int renderSizeY, int maxFrameX, int maxFrameY, bool isReverse = false, bool isLoop = false, float motionSpeed = 0.05f, float scale = 1.0f);
 	virtual void Update();
 	virtual void Render(HDC hdc);
 	virtual void Release();
 
+
 	void DownFrame();
+	void ChangeImg(const WCHAR* path, int maxFrameX, int maxFrameY, int currFrameX = 0);
+
+	//inline void SetCurrFrameX(int frame) { m_currFrameX = frame; }
+
 private:
 	Image* m_img = nullptr;
 	POINT m_renderPos;
@@ -33,5 +38,7 @@ private:
 
 	float m_scale = 1.0f;
 	bool mb_isLoop = false;
+
+	bool mb_isReverse = false;
 };
 

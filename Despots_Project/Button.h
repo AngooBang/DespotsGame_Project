@@ -45,7 +45,7 @@ public:
 		this->buttonName = name;
 
 		renderPos = { pos.x - (sizeX / 2), pos.y - (sizeY / 2) };
-		collisionRect = { renderPos.X, renderPos.Y, pos.x + (sizeX / 2), pos.y + (sizeY / 2) };
+		m_collisionRect = { renderPos.X, renderPos.Y, pos.x + (sizeX / 2), pos.y + (sizeY / 2) };
 
 		return S_OK;
 	}
@@ -55,19 +55,19 @@ public:
 		switch (state)
 		{
 		case Button::eButtonState::Idle:
-			if (PtInRect(&collisionRect, g_ptMouse))
+			if (PtInRect(&m_collisionRect, g_ptMouse))
 				state = eButtonState::Hover;
 			break;
 		case Button::eButtonState::Hover:
 			if (KeyManager::GetSingleton()->IsOnceKeyDown(VK_LBUTTON))
 				state = eButtonState::Click;
-			else if (false == PtInRect(&collisionRect, g_ptMouse))
+			else if (false == PtInRect(&m_collisionRect, g_ptMouse))
 				state = eButtonState::Idle;
 			break;
 		case Button::eButtonState::Click:
 			if (KeyManager::GetSingleton()->IsOnceKeyUp(VK_LBUTTON))
 			{
-				if (PtInRect(&collisionRect, g_ptMouse))
+				if (PtInRect(&m_collisionRect, g_ptMouse))
 				{
 					//(*scene.*buttonFunction)();
 					(_scene->*_callback)();
@@ -167,7 +167,7 @@ private:
 	eButtonState state = eButtonState::None;
 
 	Point renderPos = {};
-	RECT collisionRect = {};
+	RECT m_collisionRect = {};
 
 
 

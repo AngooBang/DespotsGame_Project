@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Animator.h"
 
-HRESULT Animator::Init(const WCHAR* path, POINT pos, int renderSizeX, int renderSizeY, int maxFrameX, int maxFrameY, bool isLoop, float motionSpeed, float scale)
+HRESULT Animator::Init(const WCHAR* path, POINT pos, int renderSizeX, int renderSizeY, int maxFrameX, int maxFrameY, bool isReverse, bool isLoop, float motionSpeed, float scale)
 {
     m_path = path;
 
@@ -14,6 +14,12 @@ HRESULT Animator::Init(const WCHAR* path, POINT pos, int renderSizeX, int render
     m_maxFrameY = maxFrameY;
 
     mb_isLoop = isLoop;
+    mb_isReverse = isReverse;
+
+    if (mb_isReverse)
+    {
+        m_img->RotateFlip(RotateFlipType::Rotate180FlipY);
+    }
 
     m_currFrameX = 0;
     m_currFrameY = 0;
@@ -58,6 +64,7 @@ void Animator::Render(HDC hdc)
 
 void Animator::Release()
 {
+
 }
 
 void Animator::DownFrame()
@@ -79,4 +86,12 @@ void Animator::DownFrame()
         }
         m_animationElapsed = 0.0f;
     }
+}
+
+void Animator::ChangeImg(const WCHAR* path, int maxFrameX, int maxFrameY, int currFrameX)
+{
+    m_img = FROM_FILE(path);
+    m_maxFrameX = maxFrameX;
+    m_maxFrameY = maxFrameY;
+    m_currFrameX = currFrameX;
 }

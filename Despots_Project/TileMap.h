@@ -44,6 +44,9 @@ private:
 	vector<pair<int, int>> nodeRelationShip[9];
 
 	Door* m_leftDoor = nullptr;
+	Door* m_upDoor = nullptr;
+	Door* m_rightDoor = nullptr;
+	Door* m_downDoor = nullptr;
 
 public:
 	HRESULT Init(POINT start);
@@ -55,6 +58,9 @@ public:
 	void RenderNode(const HDC& hdc);
 
 	void MoveLeftRoom();
+	void MoveUpRoom();
+	void MoveRightRoom();
+	void MoveDownRoom();
 
 
 };
