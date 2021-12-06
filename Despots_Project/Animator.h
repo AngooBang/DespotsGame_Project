@@ -19,9 +19,9 @@ public:
 
 private:
 	Image* m_img = nullptr;
-	POINT m_renderPos;
-	int m_renderSizeX;
-	int m_renderSizeY;
+	POINT m_renderPos = {};
+	int m_renderSizeX = 0;
+	int m_renderSizeY = 0;
 	
 	const WCHAR* m_path = nullptr;
 

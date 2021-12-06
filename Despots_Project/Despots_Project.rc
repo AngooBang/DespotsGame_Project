@@ -52,6 +52,8 @@ END
 
 IDC_CURSOR1             CURSOR                  "image\\interface\\cursor1.cur"
 
+IDC_CURSOR2             CURSOR                  "image\\interface\\cursor2.cur"
+
 #endif    // 한국어(대한민국) resources
 /////////////////////////////////////////////////////////////////////////////
 

@@ -5,15 +5,15 @@
 class MainGame : public GameEntity
 {
 private:
-	HANDLE hTimer;
+	HANDLE m_hTimer = {};
 
-	HCURSOR hCursorIn;
+	HCURSOR m_hCursorIn = {};
 
 
-	int clickedMousePosX;
-	int clickedMousePosY;
+	int m_clickedMousePosX = 0;
+	int m_clickedMousePosY = 0;
 
-	BMPImage* backBuffer;
+	BMPImage* m_backBuffer = nullptr;
 
 
 public:

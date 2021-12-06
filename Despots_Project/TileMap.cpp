@@ -2,6 +2,7 @@
 #include "TileMap.h"
 #include "BMPImage.h"
 #include "Door.h"
+#include "FullMap.h"
 
 HRESULT TileMap::Init(POINT start)
 {
@@ -40,6 +41,17 @@ void TileMap::Update()
 	SAFE_UPDATE(m_upDoor);
 	SAFE_UPDATE(m_rightDoor);
 	SAFE_UPDATE(m_downDoor);
+
+
+	if (m_moveRoom[DoorDir::Left])
+		MoveCam(DoorDir::Left);
+	if(m_moveRoom[DoorDir::Up])
+		MoveCam(DoorDir::Up);
+	if (m_moveRoom[DoorDir::Right])
+		MoveCam(DoorDir::Right);
+	if (m_moveRoom[DoorDir::Down])
+		MoveCam(DoorDir::Down);
+
 }
 
 void TileMap::Render(HDC hdc)
@@ -85,7 +97,6 @@ void TileMap::InitNode()
 
 		}
 	}
-
 }
 
 void TileMap::RenderNode(const HDC& hdc)
@@ -101,16 +112,68 @@ void TileMap::RenderNode(const HDC& hdc)
 
 void TileMap::MoveLeftRoom()
 {
+	m_moveRoom[DoorDir::Left] = true;
 }
+
 
 void TileMap::MoveUpRoom()
 {
+	m_moveRoom[DoorDir::Up] = true;
 }
 
 void TileMap::MoveRightRoom()
 {
+	m_moveRoom[DoorDir::Right] = true;
 }
 
 void TileMap::MoveDownRoom()
 {
+	m_moveRoom[DoorDir::Down] = true;
+}
+
+void TileMap::MoveCam(DoorDir dir)
+{
+	static int moveCamera = 0;
+	if (dir == DoorDir::Left || dir == DoorDir::Right)
+	{
+		if (moveCamera <= ROOM_DISTANCE_X)
+		{
+			moveCamera += 10;
+			switch (dir)
+			{
+			case DoorDir::Left:
+				CameraManager::GetSingleton()->SetCameraPos({ -10, 0 });
+				break;
+			case DoorDir::Right:
+				CameraManager::GetSingleton()->SetCameraPos({ 10, 0 });
+				break;
+			}
+		}
+		else
+		{
+			m_moveRoom[dir] = false;
+			moveCamera = 0;
+		}
+	}
+	else if (dir == DoorDir::Up || dir == DoorDir::Down)
+	{
+		if (moveCamera <= ROOM_DISTANCE_Y)
+		{
+			moveCamera += 10;
+			switch (dir)
+			{
+			case DoorDir::Up:
+				CameraManager::GetSingleton()->SetCameraPos({ 0, -10 });
+				break;
+			case DoorDir::Down:
+				CameraManager::GetSingleton()->SetCameraPos({ 0, 10 });
+				break;
+			}
+		}
+		else
+		{
+			m_moveRoom[dir] = false;
+			moveCamera = 0;
+		}
+	}
 }

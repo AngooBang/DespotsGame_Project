@@ -19,13 +19,13 @@ class TitleScene : public Scene
 	using Button = Button<TitleScene>;
 
 private:
-	Image* backGroundImg;
-	Image* despotsLogo;
+	Image* m_backGroundImg = nullptr;
+	Image* m_despotsLogo = nullptr;
 
-	RECT startTextBox;
+	RECT m_startTextBox = {};
 
-	Button* m_startButton;
-	Button* m_exitButton;
+	Button* m_startButton = nullptr;
+	Button* m_exitButton = nullptr;
 
 public:
 	HRESULT Init();

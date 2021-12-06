@@ -2,6 +2,7 @@
 #include "GameScene.h"
 #include "BMPImage.h"
 #include "FullMap.h"
+#include "Character.h"
 
 HRESULT GameScene::Init()
 {
@@ -9,40 +10,45 @@ HRESULT GameScene::Init()
 
 
 	m_backGroundImg = ImageManager::GetSingleton()->FindImage("Image/Title/BackGround.bmp");
-	m_fullMap = new FullMap();
+	m_fullMap = new FullMap;
 	m_fullMap->Init();
 
+	m_char = new Character;
+	m_char->Init();
 	return S_OK;
 }
 
 void GameScene::Update()
 {
-	if (KeyManager::GetSingleton()->IsStayKeyDown(VK_LEFT))
+	if (INPUT_KEY_STAY(VK_LEFT))
 	{
 		CameraManager::GetSingleton()->SetCameraPos({ -10, 0 });
 	}
-	if (KeyManager::GetSingleton()->IsStayKeyDown(VK_RIGHT))
+	if (INPUT_KEY_STAY(VK_RIGHT))
 	{
 		CameraManager::GetSingleton()->SetCameraPos({ 10, 0 });
 	}
-	if (KeyManager::GetSingleton()->IsStayKeyDown(VK_UP))
+	if (INPUT_KEY_STAY(VK_UP))
 	{
 		CameraManager::GetSingleton()->SetCameraPos({ 0, -10 });
 	}
-	if (KeyManager::GetSingleton()->IsStayKeyDown(VK_DOWN))
+	if (INPUT_KEY_STAY(VK_DOWN))
 	{
 		CameraManager::GetSingleton()->SetCameraPos({ 0, 10 });
 	}
 	SAFE_UPDATE(m_fullMap);
+	SAFE_UPDATE(m_char);
 }
 
 void GameScene::Render(HDC hdc)
 {
 	m_backGroundImg->Render(hdc);
 	m_fullMap->Render(hdc);
+	m_char->Render(hdc);
 }
 
 void GameScene::Release()
 {
 	SAFE_RELEASE(m_fullMap);
+	SAFE_RELEASE(m_char);
 }

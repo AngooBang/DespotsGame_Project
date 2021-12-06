@@ -16,6 +16,14 @@
 #define CAMERA_VIEW_X (WIN_SIZE_X - CAMERA_POS.x)
 #define CAMERA_VIEW_Y (WIN_SIZE_Y - CAMERA_POS.y)
 
+//#define INPUT_KEY_DOWN Input::GetButtonDown
+//#define INPUT_KEY_UP Input::GetButtonUp
+//#define INPUT_KEY_STAY Input::GetButton
+
+#define INPUT_KEY_DOWN KeyManager::GetSingleton()->IsOnceKeyDown
+#define INPUT_KEY_UP KeyManager::GetSingleton()->IsOnceKeyUp
+#define INPUT_KEY_STAY KeyManager::GetSingleton()->IsStayKeyDown
+
 #define FROM_FILE Image::FromFile
 
 
@@ -28,7 +36,7 @@
 #define SAFE_DELETE(p)	{ if (p) { delete p; p = nullptr; } }
 #define SAFE_UPDATE(p) { if (p) { p->Update();} } 
 
-enum class MoveDir { Left, Right, Up, Down };
+enum DoorDir { Left, Up, Right, Down, End };
 
 enum class ButtonType { Normal, Exit, End };
 

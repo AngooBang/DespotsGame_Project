@@ -48,6 +48,8 @@ private:
 	Door* m_rightDoor = nullptr;
 	Door* m_downDoor = nullptr;
 
+	bool m_moveRoom[DoorDir::End] = { false };
+
 public:
 	HRESULT Init(POINT start);
 	void Update();
@@ -62,6 +64,7 @@ public:
 	void MoveRightRoom();
 	void MoveDownRoom();
 
+	void MoveCam(DoorDir dir);
 
 };
 

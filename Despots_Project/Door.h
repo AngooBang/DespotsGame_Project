@@ -15,7 +15,6 @@
 #define DDOOR_POS_X WIN_SIZE_X / 2
 #define DDOOR_POS_Y WIN_SIZE_Y / 2 + 300
 
-enum class DoorDir { Left, Up, Right, Down, End };
 
 template <typename TileMap>
 class Door : public GameObject
@@ -89,7 +88,9 @@ public:
 			}
 			break;
 		case eDoorState::Hover:
-			if (KeyManager::GetSingleton()->IsOnceKeyDown(VK_LBUTTON))
+			// 커서 바꾸는법 어렵다..
+			//g_wndClass.hCursor = LoadCursor(g_hInstance, MAKEINTRESOURCE(IDC_CURSOR2));
+			if (INPUT_KEY_DOWN(VK_LBUTTON))
 			{
 				m_state = eDoorState::Click;
 				mb_changeState = true;
@@ -101,7 +102,7 @@ public:
 			}
 			break;
 		case eDoorState::Click:
-			if (KeyManager::GetSingleton()->IsOnceKeyUp(VK_LBUTTON))
+			if (INPUT_KEY_UP(VK_LBUTTON))
 			{
 				if (PtInRect(&m_collisionRect, g_ptMouse))
 				{

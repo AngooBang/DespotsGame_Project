@@ -59,13 +59,13 @@ public:
 				state = eButtonState::Hover;
 			break;
 		case Button::eButtonState::Hover:
-			if (KeyManager::GetSingleton()->IsOnceKeyDown(VK_LBUTTON))
+			if (INPUT_KEY_DOWN(VK_LBUTTON))
 				state = eButtonState::Click;
 			else if (false == PtInRect(&m_collisionRect, g_ptMouse))
 				state = eButtonState::Idle;
 			break;
 		case Button::eButtonState::Click:
-			if (KeyManager::GetSingleton()->IsOnceKeyUp(VK_LBUTTON))
+			if (INPUT_KEY_UP(VK_LBUTTON))
 			{
 				if (PtInRect(&m_collisionRect, g_ptMouse))
 				{

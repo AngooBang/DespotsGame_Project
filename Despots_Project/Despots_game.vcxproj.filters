@@ -37,11 +37,11 @@
     <Filter Include="MainGame\TileMap">
       <UniqueIdentifier>{cebb4749-68b0-4e34-8f4f-449d58cb2b35}</UniqueIdentifier>
     </Filter>
-    <Filter Include="MainGame\Button">
-      <UniqueIdentifier>{99b39dd2-5a1d-4284-a229-60aa351a1529}</UniqueIdentifier>
-    </Filter>
     <Filter Include="2D FrameWork\Animator">
       <UniqueIdentifier>{d5041088-ee26-45ef-a2ab-c7693d23bf5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Character">
+      <UniqueIdentifier>{2eca7639-7aa6-42ee-bdbf-6a3b34522673}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -104,6 +104,12 @@
     </ClCompile>
     <ClCompile Include="Animator.cpp">
       <Filter>2D FrameWork\Animator</Filter>
+    </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <Filter>MainGame\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>2D FrameWork\Manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -176,6 +182,12 @@
     <ClInclude Include="Animator.h">
       <Filter>2D FrameWork\Animator</Filter>
     </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>MainGame\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>2D FrameWork\Manager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Despots_Project.rc">
@@ -190,6 +202,9 @@
       <Filter>리소스 파일</Filter>
     </None>
     <None Include="Image\InterFace\SelectCursor.cur">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="image\interface\cursor2.cur">
       <Filter>리소스 파일</Filter>
     </None>
   </ItemGroup>

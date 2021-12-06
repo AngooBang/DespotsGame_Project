@@ -5,8 +5,8 @@
 
 HRESULT TitleScene::Init()
 {
-	backGroundImg = FROM_FILE(L"Image/Title/BackGround.bmp");
-	despotsLogo = FROM_FILE(L"Image/Title/Despot_Logo.bmp");
+	m_backGroundImg = FROM_FILE(L"Image/Title/BackGround.bmp");
+	m_despotsLogo = FROM_FILE(L"Image/Title/Despot_Logo.bmp");
 
 	m_startButton = new Button(this, &TitleScene::GameStart);
 	m_exitButton = new Button(this, &TitleScene::GameExit);
@@ -30,8 +30,8 @@ void TitleScene::Render(HDC hdc)
 {
 	Graphics G(hdc);
 
-	G.DrawImage(backGroundImg, 0, 0, WIN_SIZE_X, WIN_SIZE_Y);
-	G.DrawImage(despotsLogo, LOGO_POS_X, LOGO_POS_Y, 700, 400);
+	G.DrawImage(m_backGroundImg, 0, 0, WIN_SIZE_X, WIN_SIZE_Y);
+	G.DrawImage(m_despotsLogo, LOGO_POS_X, LOGO_POS_Y, 700, 400);
 
 	m_startButton->Render(hdc);
 	m_exitButton->Render(hdc);

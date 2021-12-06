@@ -16,6 +16,7 @@ HINSTANCE	g_hInstance;
 HWND		g_hWnd;
 LPWSTR		g_lpszClass = (LPWSTR)TEXT("Despot's Game");
 MainGame	g_mainGame;
+WNDCLASS g_wndClass;
 
 ULONG_PTR g_gpToken;
 GdiplusStartupInput g_gpsi;
@@ -46,6 +47,8 @@ int APIENTRY wWinMain(HINSTANCE _hInstance, HINSTANCE _hPrevInstance,
 	wndClass.lpszClassName = g_lpszClass;
 	wndClass.lpszMenuName = g_lpszClass;
 	wndClass.style = CS_VREDRAW | CS_HREDRAW | CS_DBLCLKS;	// bit연산
+	
+	g_wndClass = wndClass;
 
 	// 윈도우 클래스 등록
 	RegisterClass(&wndClass);
@@ -57,6 +60,7 @@ int APIENTRY wWinMain(HINSTANCE _hInstance, HINSTANCE _hPrevInstance,
 
 	SetWindowSize(WIN_START_POS_X, WIN_START_POS_Y,
 		WIN_SIZE_X, WIN_SIZE_Y);
+
 
 	// 메인게임 초기화
 	g_mainGame.Init();
