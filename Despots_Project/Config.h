@@ -40,8 +40,21 @@ enum DoorDir { Left, Up, Right, Down, End };
 
 enum class ButtonType { Normal, Exit, End };
 
+enum class TILE_TYPE { Normal, Wall, End };
+
 typedef struct ArgumentFuncPtr
 {
 	string sceneName;
 	string loadingSceneName;
 } ARGUMENT_PTR, * LPARGUMENT_PTR;
+
+typedef struct Tile
+{
+	RECT shape;
+	POINT pos;
+	Image* img;
+	bool smallNode[3][3] = { false };
+	//int frameX;
+	//int frameY;
+	TILE_TYPE type;
+}*LPTile;

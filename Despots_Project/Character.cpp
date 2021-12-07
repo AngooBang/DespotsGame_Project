@@ -2,10 +2,10 @@
 #include "Character.h"
 #include "Animator.h"
 
-HRESULT Character::Init()
+HRESULT Character::Init(POINT pos)
 {
 	m_idleAni = new Animator;
-	m_pos = { 300, 500 };
+	m_pos = pos;
 	m_width = 40;
 	m_height = 90;
 	m_idleAni->Init(L"Image/Character/Normal/Normal_Idle.png", { m_pos.x - (m_width / 2), m_pos.y - (m_height / 2) }, m_width, m_height, 5, 0, false, true, 0.15f);

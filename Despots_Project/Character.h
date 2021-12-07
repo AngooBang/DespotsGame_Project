@@ -15,7 +15,7 @@ private:
 	int m_height = 0;
 
 public:
-	virtual HRESULT Init();
+	virtual HRESULT Init(POINT pos);
 	virtual void Update();
 	virtual void Render(HDC hdc);
 	virtual void Release();

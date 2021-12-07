@@ -20,6 +20,8 @@ using namespace Gdiplus;
 #include "KeyManager.h"
 #include "SceneManager.h"
 #include "CameraManager.h"
+#include "GameManager.h"
+#include "CharacterManager.h"
 #include "Input.h"
 
 extern HWND g_hWnd;

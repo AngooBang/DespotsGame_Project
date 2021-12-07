@@ -6,28 +6,34 @@
 
 HRESULT TileMap::Init(POINT start)
 {
-	m_wallImg = ImageManager::GetSingleton()->FindImage("Image/Map/Wall.bmp");
-	m_bottomImg = ImageManager::GetSingleton()->FindImage("Image/Map/Bottom.bmp");
+	m_wallImg = FROM_FILE(L"Image/Map/Wall.bmp");
+	m_bottomImg = FROM_FILE(L"Image/Map/Bottom.bmp");
 
 
 	m_startPos = start;
 
-	m_wallPosX = m_startPos.x + m_wallImg->GetImageInfo()->width / 2;
-	m_wallPosY = m_startPos.y + m_wallImg->GetImageInfo()->height / 2;
+	m_wallPosX = m_startPos.x;
+	m_wallPosY = m_startPos.y;
 
-	m_bottomPosX = m_startPos.x + m_bottomImg->GetImageInfo()->width / 2;
-	m_bottomPosY = m_startPos.y + m_wallImg->GetImageInfo()->height + NODE_SIZE * NODE_MAXNUM_Y
-				+ m_bottomImg->GetImageInfo()->height / 2;
+	m_wallWidth = 900;
+	m_wallHeight = 140;
+
+
+	m_bottomPosX = m_startPos.x;
+	m_bottomPosY = m_startPos.y + m_wallHeight + TILE_SIZE * TILE_MAXNUM_Y;
+
+	m_bottomWidth = 900;
+	m_bottomHeight = 50;
+
 
 	m_leftDoor = new Door(this, &TileMap::MoveLeftRoom);
 	m_upDoor = new Door(this, &TileMap::MoveUpRoom);
 	m_rightDoor = new Door(this, &TileMap::MoveRightRoom);
 	m_downDoor = new Door(this, &TileMap::MoveDownRoom);
-	
-	m_leftDoor->Init(DoorDir::Left, POINT({ m_startPos.x - 20, m_startPos.y + m_wallImg->GetImageInfo()->height + (NODE_SIZE * 3) }));
-	m_upDoor->Init(DoorDir::Up, POINT({ m_wallPosX, m_wallPosY - 20 }));
-	m_rightDoor->Init(DoorDir::Right, POINT({ m_startPos.x + m_wallImg->GetImageInfo()->width + 20, m_startPos.y + m_wallImg->GetImageInfo()->height + (NODE_SIZE * 3) }));
-	m_downDoor->Init(DoorDir::Down, POINT({ m_bottomPosX, m_bottomPosY - 50 }));
+	m_leftDoor->Init(DoorDir::Left, POINT({ m_startPos.x - 20, m_startPos.y + m_wallHeight + (TILE_SIZE * 3) }));
+	m_upDoor->Init(DoorDir::Up, POINT({ m_wallPosX + (m_wallWidth / 2), m_wallPosY + (m_wallHeight / 2) - 17}));
+	m_rightDoor->Init(DoorDir::Right, POINT({ m_startPos.x + m_wallWidth + 20, m_startPos.y + m_wallHeight + (TILE_SIZE * 3) }));
+	m_downDoor->Init(DoorDir::Down, POINT({ m_bottomPosX + (m_bottomWidth / 2), m_bottomPosY - 25}));
 
 
 	InitNode();
@@ -56,10 +62,11 @@ void TileMap::Update()
 
 void TileMap::Render(HDC hdc)
 {
-	m_wallImg->Render(hdc, m_wallPosX + CAMERA_VIEW_X, m_wallPosY + CAMERA_VIEW_Y);
+	Graphics g(hdc);
+	g.DrawImage(m_wallImg, m_wallPosX + CAMERA_VIEW_X, m_wallPosY + CAMERA_VIEW_Y, m_wallWidth, m_wallHeight);
 
-	RenderNode(hdc);
-	m_bottomImg->Render(hdc, m_bottomPosX + CAMERA_VIEW_X, m_bottomPosY + CAMERA_VIEW_Y);
+	RenderNode(hdc, g);
+	g.DrawImage(m_bottomImg, m_bottomPosX + CAMERA_VIEW_X, m_bottomPosY + CAMERA_VIEW_Y, m_bottomWidth, m_bottomHeight);
 
 	m_leftDoor->Render(hdc);
 	m_upDoor->Render(hdc);
@@ -79,33 +86,32 @@ void TileMap::Release()
 
 void TileMap::InitNode()
 {
-	for (int i = 0; i < NODE_MAXNUM_Y; ++i)
+	for (int i = 0; i < TILE_MAXNUM_Y; ++i)
 	{
-		for (int j = 0; j < NODE_MAXNUM_X; ++j)
+		for (int j = 0; j < TILE_MAXNUM_X; ++j)
 		{
-			node[i][j].img = ImageManager::GetSingleton()->FindImage("Image/Map/Ground_0.bmp");
+			node[i][j].img = FROM_FILE(L"Image/Map/Ground_0.bmp");
 
-			node[i][j].pos.x = m_startPos.x + (NODE_SIZE / 2) + j * NODE_SIZE;
-			node[i][j].pos.y = m_startPos.y + m_wallImg->GetImageInfo()->height
-				+ (NODE_SIZE / 2) + i * NODE_SIZE;
+			node[i][j].pos.x = m_startPos.x +  j * TILE_SIZE;
+			node[i][j].pos.y = m_startPos.y + m_wallHeight + i * TILE_SIZE;
 
-
-			node[i][j].shape.left = node[i][j].pos.x - (NODE_SIZE / 2);
-			node[i][j].shape.right = node[i][j].pos.x + (NODE_SIZE / 2);
-			node[i][j].shape.top = node[i][j].pos.y - (NODE_SIZE / 2);
-			node[i][j].shape.bottom = node[i][j].pos.y + (NODE_SIZE / 2);
+			
+			node[i][j].shape.left = node[i][j].pos.x - (TILE_SIZE / 2);
+			node[i][j].shape.right = node[i][j].pos.x + (TILE_SIZE / 2);
+			node[i][j].shape.top = node[i][j].pos.y - (TILE_SIZE / 2);
+			node[i][j].shape.bottom = node[i][j].pos.y + (TILE_SIZE / 2);
 
 		}
 	}
 }
 
-void TileMap::RenderNode(const HDC& hdc)
+void TileMap::RenderNode(const HDC& hdc, Graphics& g)
 {
-	for (int i = 0; i < NODE_MAXNUM_Y; ++i)
+	for (int i = 0; i < TILE_MAXNUM_Y; ++i)
 	{
-		for (int j = 0; j < NODE_MAXNUM_X; ++j)
+		for (int j = 0; j < TILE_MAXNUM_X; ++j)
 		{
-			node[i][j].img->Render(hdc, node[i][j].pos.x + CAMERA_VIEW_X, node[i][j].pos.y + CAMERA_VIEW_Y);
+			g.DrawImage(node[i][j].img, node[i][j].pos.x + CAMERA_VIEW_X, node[i][j].pos.y + CAMERA_VIEW_Y, TILE_SIZE, TILE_SIZE);
 		}
 	}
 }

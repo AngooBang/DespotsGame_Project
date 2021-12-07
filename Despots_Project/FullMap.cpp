@@ -14,7 +14,7 @@ HRESULT FullMap::Init()
 	m_room3->Init(POINT({ START_ROOM_X, START_ROOM_Y + ROOM_DISTANCE_Y }));
 	m_room4->Init(POINT({ START_ROOM_X + ROOM_DISTANCE_X, START_ROOM_Y + ROOM_DISTANCE_Y }));
 	
-
+	GameManager::GetSingleton()->SetTileMap(m_room1);
 	return S_OK;
 }
 

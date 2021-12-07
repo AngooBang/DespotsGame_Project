@@ -14,6 +14,7 @@ HRESULT MainGame::Init()
 	TimerManager::GetSingleton()->Init();
 	SceneManager::GetSingleton()->Init();
 	KeyManager::GetSingleton()->Init();
+	GameManager::GetSingleton()->Init();
 	// 키매니저 초기화
 	Input::Init(g_hWnd);
 
@@ -68,6 +69,8 @@ void MainGame::Release()
 	KeyManager::GetSingleton()->Release();
 
 	SceneManager::GetSingleton()->Release();
+
+	GameManager::GetSingleton()->Release();
 
 	// GDI+ 객체 종료
 	GdiplusShutdown(g_gpToken);

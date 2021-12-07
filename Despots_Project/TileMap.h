@@ -1,24 +1,15 @@
 #pragma once
 #include "GameEntity.h"
 
-#define NODE_MAXNUM_Y 9
-#define NODE_MAXNUM_X 20
-#define NODE_SIZE 45
-
-
-enum class TILE_TYPE { Normal, Wall, End };
+#define TILE_MAXNUM_Y 9
+#define TILE_MAXNUM_X 20
+#define TILE_SIZE 45
 
 
 
-typedef struct Node
-{
-	RECT shape;
-	POINT pos;
-	BMPImage* img;
-	//int frameX;
-	//int frameY;
-	TILE_TYPE type;
-}*LPNode;
+
+
+
 
 template <typename T>
 class Door;
@@ -27,20 +18,23 @@ class TileMap : public GameEntity
 	using Door = Door<TileMap>;
 
 private:
-	BMPImage* m_wallImg = nullptr;
-	BMPImage* m_bottomImg = nullptr;
-	BMPImage* m_tilemapImg = nullptr;
+	Image* m_wallImg = nullptr;
+	Image* m_bottomImg = nullptr;
 
 
 	POINT m_startPos;
 
 	int m_wallPosX = 0;
 	int m_wallPosY = 0;
+	int m_wallWidth = 0;
+	int m_wallHeight = 0;
 
 	int m_bottomPosX = 0;
 	int m_bottomPosY = 0;
+	int m_bottomWidth = 0;
+	int m_bottomHeight = 0;
 
-	Node node[NODE_MAXNUM_Y][NODE_MAXNUM_X];
+	Tile node[TILE_MAXNUM_Y][TILE_MAXNUM_X];
 	vector<pair<int, int>> nodeRelationShip[9];
 
 	Door* m_leftDoor = nullptr;
@@ -57,7 +51,7 @@ public:
 	void Release();
 
 	void InitNode();
-	void RenderNode(const HDC& hdc);
+	void RenderNode(const HDC& hdc, Graphics& g);
 
 	void MoveLeftRoom();
 	void MoveUpRoom();

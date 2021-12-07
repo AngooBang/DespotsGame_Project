@@ -111,6 +111,12 @@
     <ClCompile Include="Input.cpp">
       <Filter>2D FrameWork\Manager</Filter>
     </ClCompile>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>2D FrameWork\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterManager.cpp">
+      <Filter>2D FrameWork\Manager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainGame.h">
@@ -186,6 +192,12 @@
       <Filter>MainGame\Character</Filter>
     </ClInclude>
     <ClInclude Include="Input.h">
+      <Filter>2D FrameWork\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManager.h">
+      <Filter>2D FrameWork\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterManager.h">
       <Filter>2D FrameWork\Manager</Filter>
     </ClInclude>
   </ItemGroup>
